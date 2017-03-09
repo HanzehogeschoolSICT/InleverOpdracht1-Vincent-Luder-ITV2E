@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Random;
 
 /**
@@ -18,11 +20,11 @@ public class Compare implements Comparable<Compare>{
     }
 
     @Override
-    public int compareTo(Compare o) {
-        if(this.getValue() < o.getValue()){
+    public int compareTo(Compare compareObject) {
+        if(this.getValue() < compareObject.getValue()){
             return 1;
         }
-        else if(this.getValue() > o.getValue()){
+        else if(this.getValue() > compareObject.getValue()){
             return -1;
         }
         else{

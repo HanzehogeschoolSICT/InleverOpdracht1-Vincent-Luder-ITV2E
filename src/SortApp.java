@@ -1,10 +1,11 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import model.ArrayFiller;
+import model.Compare;
 
 import java.util.ArrayList;
 
@@ -13,18 +14,12 @@ import java.util.ArrayList;
  */
 public class SortApp extends Application {
     ArrayList<Compare> array = new ArrayList<>();
-
+    ArrayFiller filler = new ArrayFiller();
 
     Compare compare;
 
 
 
-    public void fillArray(int limit){
-        for(int i = 0; i < limit; i++ ){
-            this.compare = new Compare();
-            array.add(compare);
-        }
-    }
 
     public Rectangle createRectangle(int lengte){
 
@@ -34,15 +29,20 @@ public class SortApp extends Application {
         return rectangle;
     }
 
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        fillArray(10);
-        TilePane pane = new TilePane();
-
+    public void addRectangle(HBox pane){
         for(Compare rectangle: array){
             pane.getChildren().add(createRectangle(rectangle.getValue()));
         }
+    }
+
+
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        filler.fillArray(10,array);
+        HBox pane = new HBox();
+
+        addRectangle(pane);
 
 
         Scene scene = new Scene(pane);
