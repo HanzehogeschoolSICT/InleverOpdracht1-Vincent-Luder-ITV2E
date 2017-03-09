@@ -12,7 +12,7 @@ public class Compare implements Comparable<Compare>{
     Random random = new Random();
 
     public Compare(){
-        value = random.nextInt(10) ;
+        value = random.nextInt(20) ;
     }
 
     public int getValue(){

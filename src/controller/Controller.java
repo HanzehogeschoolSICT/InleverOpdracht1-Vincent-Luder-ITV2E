@@ -7,14 +7,8 @@ import model.Compare;
  */
 public class Controller {
 
-    ArrayFiller filler = new ArrayFiller();
-    Compare compare = new Compare();
-
-    public Controller(){
+    public void sort(){
 
     }
-
-
-
 
 }

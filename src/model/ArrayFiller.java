@@ -15,15 +15,12 @@ public class ArrayFiller {
 
     }
 
-    public void fillArray(int limit,ArrayList<Compare> compareArray){
+    public void fillArray(int limit,Compare[] compareArray){
         for(int i = 0; i < limit; i++ ){
-            compareArray.add(new Compare());
+            compareArray[i]= new Compare();
         }
     }
 
-    public void getSize(){
-        System.out.println( array.size());
 
-    }
 
 }
