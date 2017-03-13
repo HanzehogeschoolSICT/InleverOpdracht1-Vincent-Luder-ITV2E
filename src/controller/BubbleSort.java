@@ -3,28 +3,27 @@ package controller;
 import model.Compare;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by Gebruiker on 8-3-2017.
  */
 public class BubbleSort {
-    ArrayList<Compare[]> arrayList = new ArrayList<>();
+    ArrayList<ArrayList<Compare>> arrayList = new ArrayList<>();
     //ArrayList<Compare> compareArrayList = new ArrayList<>();
     //Compare[] compareArray = new Compare[10];
 
     public void printArrayList(){
-        for(int i = 0; i < arrayList.size();i++) {
-            for (int j = 0; j < 10; j++) {
-                Compare[] array = new Compare[10];
-                array = arrayList.get(i);
-                System.out.println(array[j].getValue());
+        for(int i = 0; i< arrayList.size();i++){
+            ArrayList<Compare> temp = new ArrayList<>();
+            temp = arrayList.get(i);
+            for(Compare comp: temp){
+                System.out.println(comp.getValue());
             }
         }
     }
 
     public void sortArray(Compare [] compareArray){
-
+        ArrayList<Compare> tempArray = new ArrayList<>();
         boolean nextPass = true;
 
         for(int k = 1; k < compareArray.length && nextPass; k++){
@@ -41,7 +40,19 @@ public class BubbleSort {
 
                 }
             }
+            for(Compare inte: compareArray){
+                //System.out.println(inte);
+                tempArray.add(inte);
+
+            }
+
+            for(Compare h:compareArray){
+               // System.out.println(h.getValue());
+            }
+            arrayList.add(tempArray);
+            tempArray.clear();
         }
+
 
     }
 

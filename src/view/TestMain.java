@@ -13,15 +13,7 @@ import java.util.ArrayList;
 public class TestMain {
     ArrayList<ArrayList<Integer>> arrayList = new ArrayList<>();
 
-    public void printArrayList(){
-        for(int i = 0; i < arrayList.size();i++) {
-            for (int j = 0; j < 5; j++) {
-                ArrayList<Integer> array = new ArrayList<>();
-                array = arrayList.get(i);
-                System.out.println(array.get(j));
-            }
-        }
-    }
+
 
     public  void bubbleSort(int[] numArray) {
         ArrayList<Integer> tempArray = new ArrayList<>();
@@ -61,9 +53,9 @@ public class TestMain {
         Compare[] array = new Compare[10];
 
         filler.fillArray(10,array);
-        //sorter.sortArray(array);
+        sorter.sortArray(array);
+        sorter.printArrayList();
 
-        //sorter.printArrayList();
         int[] array1 = new int[5];
         array1[0] = 10;
         array1[1] = 5;
@@ -72,12 +64,12 @@ public class TestMain {
         array1[4] = 1;
 
         TestMain henk = new TestMain();
-        henk.bubbleSort(array1);
+        //henk.bubbleSort(array1);
         //for(int i =0; i< array1.length;i++){
           //  System.out.println(array1[i]);
         //}
 
-        henk.printArrayList();
+
 
 
     }
