@@ -19,6 +19,10 @@ public class Compare implements Comparable<Compare>{
         return value;
     }
 
+    public void changeValue(int newValue){
+        value = newValue;
+    }
+
     @Override
     public int compareTo(Compare compareObject) {
         if(this.getValue() < compareObject.getValue()){

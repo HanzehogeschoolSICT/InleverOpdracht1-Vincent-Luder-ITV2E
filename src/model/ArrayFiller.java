@@ -17,7 +17,7 @@ public class ArrayFiller {
 
     public void fillArray(int limit,Compare[] compareArray){
         for(int i = 0; i < limit; i++ ){
-            compareArray[i]= new Compare();
+            compareArray[i] = (new Compare());
         }
     }
 

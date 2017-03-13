@@ -48,26 +48,20 @@ public class TestMain {
 
 
     public static void main(String[] args) {
+        ArrayList<Compare[]> arrayList = new ArrayList<>();
+
+
         ArrayFiller filler = new ArrayFiller();
         BubbleSort sorter = new BubbleSort();
         Compare[] array = new Compare[10];
 
         filler.fillArray(10,array);
-        sorter.sortArray(array);
-        sorter.printArrayList();
+        sorter.sortArray(array,arrayList);
 
-        int[] array1 = new int[5];
-        array1[0] = 10;
-        array1[1] = 5;
-        array1[2] = 7;
-        array1[3] = 4;
-        array1[4] = 1;
+        sorter.printArrayList(arrayList);
 
         TestMain henk = new TestMain();
-        //henk.bubbleSort(array1);
-        //for(int i =0; i< array1.length;i++){
-          //  System.out.println(array1[i]);
-        //}
+
 
 
 

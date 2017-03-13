@@ -3,27 +3,32 @@ package controller;
 import model.Compare;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Gebruiker on 8-3-2017.
  */
 public class BubbleSort {
-    ArrayList<ArrayList<Compare>> arrayList = new ArrayList<>();
+    //ArrayList<ArrayList<Compare>> arrayList = new ArrayList<>();
     //ArrayList<Compare> compareArrayList = new ArrayList<>();
     //Compare[] compareArray = new Compare[10];
 
-    public void printArrayList(){
-        for(int i = 0; i< arrayList.size();i++){
-            ArrayList<Compare> temp = new ArrayList<>();
+    public void printArrayList(ArrayList<Compare[]> arrayList){
+        for(int i = 0; i< arrayList.size();){
+            Compare[] temp = new Compare[10];
             temp = arrayList.get(i);
             for(Compare comp: temp){
                 System.out.println(comp.getValue());
             }
+            arrayList.remove(0);
+            if(arrayList.size() == 0){
+                break;
+            }
         }
     }
 
-    public void sortArray(Compare [] compareArray){
-        ArrayList<Compare> tempArray = new ArrayList<>();
+    public void sortArray(Compare [] compareArray, ArrayList<Compare[]> arrayList){
+        Compare[] tempArray = new Compare[10];
         boolean nextPass = true;
 
         for(int k = 1; k < compareArray.length && nextPass; k++){
@@ -40,17 +45,17 @@ public class BubbleSort {
 
                 }
             }
-            for(Compare inte: compareArray){
+            for(int i =0;i < tempArray.length;i++){
                 //System.out.println(inte);
-                tempArray.add(inte);
+                tempArray[i] = compareArray[i];
 
             }
 
             for(Compare h:compareArray){
-               // System.out.println(h.getValue());
+                System.out.println(h.getValue());
             }
             arrayList.add(tempArray);
-            tempArray.clear();
+            Arrays.fill(tempArray,null);
         }
 
 
