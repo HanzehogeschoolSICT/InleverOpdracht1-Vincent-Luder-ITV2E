@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Toggle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -14,6 +15,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.ArrayFiller;
 import model.Compare;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import java.util.ArrayList;
 
@@ -95,15 +98,22 @@ public class SortApp extends Application {
         primaryStage.show();
 
 
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                //sortButton.setOnAction(event -> step());
-                if(bubblesorRadio.isSelected()){
-                    bubbleSortStep();
-                }
+                group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+                    public void changed(ObservableValue<? extends Toggle> ov,
+                                        Toggle old_toggle, Toggle new_toggle) {
+                        if(bubblesorRadio.isSelected()){
+                            sortButton.setOnAction(event -> bubbleSortStep());
+                        }
+                        if(insertionRadio.isSelected()){
+                            //sortButton.setOnAction(event -> bubbleSortStep());
+                        }
 
-
+                    }
+                });
             }
         });
 
