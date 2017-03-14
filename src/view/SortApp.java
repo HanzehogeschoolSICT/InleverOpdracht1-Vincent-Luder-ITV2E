@@ -1,5 +1,6 @@
 package view;
 import controller.BubbleSort;
+import controller.InsertionSort;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -36,7 +37,7 @@ public class SortApp extends Application {
 
     ArrayList<Compare[]> arrayList = new ArrayList<>();
     BubbleSort sorter = new BubbleSort();
-
+    InsertionSort insertionSorter = new InsertionSort();
 
     public Rectangle createRectangle(int lengte){
 
@@ -56,6 +57,13 @@ public class SortApp extends Application {
     public void bubbleSortStep(){
         //pane.requestLayout();
         sorter.sortArray(array);
+        rectanglePane.getChildren().clear();
+        addRectangle(rectanglePane);
+    }
+
+    public void insertionSortStep(){
+        //pane.requestLayout();
+        insertionSorter.insertionSort(array);
         rectanglePane.getChildren().clear();
         addRectangle(rectanglePane);
     }
@@ -109,7 +117,7 @@ public class SortApp extends Application {
                             sortButton.setOnAction(event -> bubbleSortStep());
                         }
                         if(insertionRadio.isSelected()){
-                            //sortButton.setOnAction(event -> bubbleSortStep());
+                            sortButton.setOnAction(event -> insertionSortStep());
                         }
 
                     }
