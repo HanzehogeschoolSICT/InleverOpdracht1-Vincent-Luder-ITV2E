@@ -5,6 +5,8 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -19,13 +21,14 @@ import java.util.ArrayList;
  * Created by Gebruiker on 8-3-2017.
  */
 public class SortApp extends Application {
-    BubbleSort bubbleSort = new BubbleSort();
-    Compare[] compareArray = new Compare[10];
-    Compare[] array = new Compare[10];
+    int[] array = new int[20];
     ArrayFiller filler = new ArrayFiller();
     Button sortButton = new Button();
     HBox pane = new HBox();
     HBox rectanglePane = new HBox();
+
+    RadioButton bubblesorRadio = new RadioButton("bubblesort");
+    RadioButton insertionRadio = new RadioButton("insertionSort");
     //HBox knopjes = new HBox();
 
     ArrayList<Compare[]> arrayList = new ArrayList<>();
@@ -34,7 +37,7 @@ public class SortApp extends Application {
 
     public Rectangle createRectangle(int lengte){
 
-        Rectangle rectangle = new Rectangle(100,10,50,lengte*10);
+        Rectangle rectangle = new Rectangle(100,10,50,lengte*15);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(Color.WHITE);
         return rectangle;
@@ -42,12 +45,12 @@ public class SortApp extends Application {
 
     public void addRectangle(HBox pane){
         this.rectanglePane = pane;
-        for(Compare rectangle: array){
-            pane.getChildren().add(createRectangle(rectangle.getValue()));
+        for(int rectangle: array){
+            pane.getChildren().add(createRectangle(rectangle));
         }
     }
 
-    public void step(){
+    public void bubbleSortStep(){
         //pane.requestLayout();
         sorter.sortArray(array);
         rectanglePane.getChildren().clear();
@@ -63,7 +66,7 @@ public class SortApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //fill the array with ten Compare objects
-        filler.fillArray(10,array);
+        filler.fillArray(20,array);
 
 
 
@@ -74,13 +77,20 @@ public class SortApp extends Application {
 
         pane.getChildren().add(rectanglePane);
         pane.getChildren().add(sortButton);
+
+        pane.getChildren().addAll(bubblesorRadio,insertionRadio);
+        ToggleGroup group = new ToggleGroup();
+        bubblesorRadio.setToggleGroup(group);
+        insertionRadio.setToggleGroup(group);
+
+
         addRectangle(rectanglePane);
 
 
         Scene scene = new Scene(pane);
 
         primaryStage.setScene(scene);
-        primaryStage.setWidth(600);
+        primaryStage.setWidth(1600);
         primaryStage.setHeight(300);
         primaryStage.show();
 
@@ -88,7 +98,10 @@ public class SortApp extends Application {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                sortButton.setOnAction(event -> step());
+                //sortButton.setOnAction(event -> step());
+                if(bubblesorRadio.isSelected()){
+                    bubbleSortStep();
+                }
 
 
             }
