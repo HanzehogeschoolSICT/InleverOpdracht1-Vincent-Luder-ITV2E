@@ -1,5 +1,6 @@
 package controller;
 
+import model.ArrayFiller;
 import model.Compare;
 
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ public class BubbleSort {
     //ArrayList<ArrayList<Compare>> arrayList = new ArrayList<>();
     //ArrayList<Compare> compareArrayList = new ArrayList<>();
     //Compare[] compareArray = new Compare[10];
+    //ArrayList<Compare[]> stepArray = new ArrayList<>();
+    boolean pass = true;
 
     public void printArrayList(ArrayList<Compare[]> arrayList){
         for(int i = 0; i< arrayList.size();){
@@ -27,45 +30,51 @@ public class BubbleSort {
         }
     }
 
-    public void sortArray(Compare [] compareArray, ArrayList<Compare[]> arrayList){
-        Compare[] tempArray = new Compare[10];
-        boolean nextPass = true;
 
-        for(int k = 1; k < compareArray.length && nextPass; k++){
-            nextPass = false;
 
-            for (int j = 0; j < compareArray.length -k; j++){
+    public void sortArray(Compare [] compareArray){
 
-                if(compareArray[j].compareTo(compareArray[j+1]) == -1){
+
+            for (int j = 0; j < compareArray.length -1; j++) {
+
+                if (compareArray[j].compareTo(compareArray[j + 1]) == -1) {
                     Compare temp = compareArray[j];
-                    compareArray[j] = compareArray[j +1];
-                    compareArray[j+1] = temp;
-                    nextPass = true;
+                    compareArray[j] = compareArray[j + 1];
+                    compareArray[j + 1] = temp;
 
+                    for(Compare compare : compareArray){
+                        System.out.println(compare.getValue());
+                    }
 
                 }
-            }
-            for(int i =0;i < tempArray.length;i++){
-                //System.out.println(inte);
-                tempArray[i] = compareArray[i];
 
             }
 
-            for(Compare h:compareArray){
-                System.out.println(h.getValue());
-            }
-            arrayList.add(tempArray);
-            Arrays.fill(tempArray,null);
         }
 
 
-    }
+
+
 
     public void convertToArray(ArrayList<Compare> arrayList,Compare[] array){
         for(int i = 0; i < arrayList.size(); i++){
             array[i] = arrayList.get(i);
         }
     }
+
+    public static void main(String[] args) {
+        ArrayList<Compare[]> stepArray = new ArrayList<>();
+        BubbleSort sorter = new BubbleSort();
+        ArrayFiller filler = new ArrayFiller();
+        Compare[] compareArray = new Compare[10];
+        filler.fillArray(10,compareArray);
+        filler.fillArray(10,compareArray);
+        filler.fillArray(10,compareArray);
+        filler.fillArray(10,compareArray);
+        sorter.sortArray(compareArray);
+
+    }
+
 
 
 }

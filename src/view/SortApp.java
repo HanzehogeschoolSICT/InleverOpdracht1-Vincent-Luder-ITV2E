@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -23,10 +24,12 @@ public class SortApp extends Application {
     Compare[] array = new Compare[10];
     ArrayFiller filler = new ArrayFiller();
     Button sortButton = new Button();
+    HBox pane = new HBox();
+    HBox rectanglePane = new HBox();
+    //HBox knopjes = new HBox();
 
-
-
-
+    ArrayList<Compare[]> arrayList = new ArrayList<>();
+    BubbleSort sorter = new BubbleSort();
 
 
     public Rectangle createRectangle(int lengte){
@@ -38,30 +41,40 @@ public class SortApp extends Application {
     }
 
     public void addRectangle(HBox pane){
+        this.rectanglePane = pane;
         for(Compare rectangle: array){
             pane.getChildren().add(createRectangle(rectangle.getValue()));
         }
     }
 
+    public void step(){
+        //pane.requestLayout();
+        sorter.sortArray(array);
+        rectanglePane.getChildren().clear();
+        addRectangle(rectanglePane);
+    }
+
     void test(HBox pane){
         System.out.println("test");
         pane.getChildren().clear();
-        addRectangle(pane);
+        addRectangle(rectanglePane);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //fill the array with ten Compare objects
         filler.fillArray(10,array);
-        //bubbleSort.convertToArray(array,compareArray);
-        HBox knopjes = new HBox();
-        HBox pane = new HBox();
-        pane.setAlignment(Pos.BOTTOM_CENTER);
 
+
+
+        pane.setAlignment(Pos.TOP_CENTER);
+        rectanglePane.setAlignment(Pos.BOTTOM_CENTER);
 
         sortButton.setText("sort");
 
+        pane.getChildren().add(rectanglePane);
         pane.getChildren().add(sortButton);
-        addRectangle(pane);
+        addRectangle(rectanglePane);
 
 
         Scene scene = new Scene(pane);
@@ -75,7 +88,7 @@ public class SortApp extends Application {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                sortButton.setOnAction(event -> test(pane));
+                sortButton.setOnAction(event -> step());
 
 
             }
@@ -83,4 +96,6 @@ public class SortApp extends Application {
 
 
     }
+
+
 }

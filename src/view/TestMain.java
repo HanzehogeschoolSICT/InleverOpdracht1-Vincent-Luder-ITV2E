@@ -56,9 +56,9 @@ public class TestMain {
         Compare[] array = new Compare[10];
 
         filler.fillArray(10,array);
-        sorter.sortArray(array,arrayList);
+        //sorter.sortArray(array,arrayList);
 
-        sorter.printArrayList(arrayList);
+        //sorter.printArrayList(arrayList);
 
         TestMain henk = new TestMain();
 
