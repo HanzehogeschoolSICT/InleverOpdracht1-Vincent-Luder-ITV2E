@@ -32,8 +32,8 @@ public class SortApp extends Application {
     HBox pane = new HBox();
     HBox rectanglePane = new HBox();
 
-    RadioButton bubblesorRadio = new RadioButton("bubblesort");
-    RadioButton insertionRadio = new RadioButton("insertionSort");
+    RadioButton bubblesorRadio = new RadioButton("BubbleSort");
+    RadioButton insertionRadio = new RadioButton("InsertionSort");
     //HBox knopjes = new HBox();
 
     BubbleSort sorter = new BubbleSort();
