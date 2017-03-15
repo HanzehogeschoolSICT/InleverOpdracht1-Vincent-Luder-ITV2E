@@ -31,8 +31,8 @@ public class SortApp extends Application {
     HBox pane = new HBox();
     HBox rectanglePane = new HBox();
 
-    RadioButton bubblesorRadio = new RadioButton("bubblesort");
-    RadioButton insertionRadio = new RadioButton("insertionSort");
+    RadioButton bubblesorRadio = new RadioButton("BubbleSort");
+    RadioButton insertionRadio = new RadioButton("InsertionSort");
     //HBox knopjes = new HBox();
 
     ArrayList<Compare[]> arrayList = new ArrayList<>();
@@ -41,7 +41,7 @@ public class SortApp extends Application {
 
     public Rectangle createRectangle(int lengte){
 
-        Rectangle rectangle = new Rectangle(100,10,50,lengte*15);
+        Rectangle rectangle = new Rectangle(100,10,20,lengte*15);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(Color.WHITE);
         return rectangle;
@@ -101,7 +101,7 @@ public class SortApp extends Application {
         Scene scene = new Scene(pane);
 
         primaryStage.setScene(scene);
-        primaryStage.setWidth(1600);
+        primaryStage.setWidth(800);
         primaryStage.setHeight(300);
         primaryStage.show();
 
