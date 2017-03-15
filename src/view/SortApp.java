@@ -28,6 +28,7 @@ public class SortApp extends Application {
     int[] array = new int[20];
     ArrayFiller filler = new ArrayFiller();
     Button sortButton = new Button();
+    Button resetButton = new Button();
     HBox pane = new HBox();
     HBox rectanglePane = new HBox();
 
@@ -35,13 +36,12 @@ public class SortApp extends Application {
     RadioButton insertionRadio = new RadioButton("insertionSort");
     //HBox knopjes = new HBox();
 
-    ArrayList<Compare[]> arrayList = new ArrayList<>();
     BubbleSort sorter = new BubbleSort();
     InsertionSort insertionSorter = new InsertionSort();
 
     public Rectangle createRectangle(int lengte){
 
-        Rectangle rectangle = new Rectangle(100,10,50,lengte*15);
+        Rectangle rectangle = new Rectangle(100,10,20,lengte*15);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(Color.WHITE);
         return rectangle;
@@ -68,11 +68,16 @@ public class SortApp extends Application {
         addRectangle(rectanglePane);
     }
 
-    void test(HBox pane){
-        System.out.println("test");
+    public void reset(HBox pane){
+        this.rectanglePane =pane;
         pane.getChildren().clear();
-        addRectangle(rectanglePane);
+        filler.fillArray(20,array);
+        addRectangle(pane);
+
+
     }
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -85,9 +90,11 @@ public class SortApp extends Application {
         rectanglePane.setAlignment(Pos.BOTTOM_CENTER);
 
         sortButton.setText("sort");
+        resetButton.setText("reset");
 
         pane.getChildren().add(rectanglePane);
         pane.getChildren().add(sortButton);
+        pane.getChildren().add(resetButton);
 
         pane.getChildren().addAll(bubblesorRadio,insertionRadio);
         ToggleGroup group = new ToggleGroup();
@@ -101,7 +108,7 @@ public class SortApp extends Application {
         Scene scene = new Scene(pane);
 
         primaryStage.setScene(scene);
-        primaryStage.setWidth(1600);
+        primaryStage.setWidth(800);
         primaryStage.setHeight(300);
         primaryStage.show();
 
@@ -110,6 +117,9 @@ public class SortApp extends Application {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+
+                resetButton.setOnAction(event -> reset(rectanglePane));
+
                 group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
                     public void changed(ObservableValue<? extends Toggle> ov,
                                         Toggle old_toggle, Toggle new_toggle) {
