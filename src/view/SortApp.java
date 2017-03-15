@@ -1,6 +1,7 @@
 package view;
 import controller.BubbleSort;
 import controller.InsertionSort;
+import controller.QuickSort;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -25,23 +26,29 @@ import java.util.ArrayList;
  * Created by Gebruiker on 8-3-2017.
  */
 public class SortApp extends Application {
-    int[] array = new int[20];
+
+    int arrayLimit = 50;
+
+    int[] array = new int[arrayLimit];
     ArrayFiller filler = new ArrayFiller();
     Button sortButton = new Button();
+    Button autoButton = new Button();
     Button resetButton = new Button();
     HBox pane = new HBox();
     HBox rectanglePane = new HBox();
 
     RadioButton bubblesorRadio = new RadioButton("BubbleSort");
     RadioButton insertionRadio = new RadioButton("InsertionSort");
+    RadioButton quickRadio = new RadioButton("Quicksort");
     //HBox knopjes = new HBox();
 
     BubbleSort sorter = new BubbleSort();
     InsertionSort insertionSorter = new InsertionSort();
+    QuickSort quicksorter = new QuickSort();
 
     public Rectangle createRectangle(int lengte){
 
-        Rectangle rectangle = new Rectangle(100,10,20,lengte*15);
+        Rectangle rectangle = new Rectangle(100,10,10,lengte*15);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(Color.WHITE);
         return rectangle;
@@ -68,10 +75,17 @@ public class SortApp extends Application {
         addRectangle(rectanglePane);
     }
 
+    public void QuickSortStep(){
+        //pane.requestLayout();
+        quicksorter.quickSort(array);
+        rectanglePane.getChildren().clear();
+        addRectangle(rectanglePane);
+    }
+
     public void reset(HBox pane){
         this.rectanglePane =pane;
         pane.getChildren().clear();
-        filler.fillArray(20,array);
+        filler.fillArray(arrayLimit,array);
         addRectangle(pane);
 
 
@@ -82,24 +96,27 @@ public class SortApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //fill the array with ten Compare objects
-        filler.fillArray(20,array);
+        filler.fillArray(arrayLimit,array);
 
 
 
         pane.setAlignment(Pos.TOP_CENTER);
         rectanglePane.setAlignment(Pos.BOTTOM_CENTER);
 
-        sortButton.setText("sort");
-        resetButton.setText("reset");
+        sortButton.setText("Sorteer");
+        autoButton.setText("Auto Sort");
+        resetButton.setText("Reset");
 
         pane.getChildren().add(rectanglePane);
         pane.getChildren().add(sortButton);
+        pane.getChildren().add(autoButton);
         pane.getChildren().add(resetButton);
 
-        pane.getChildren().addAll(bubblesorRadio,insertionRadio);
+        pane.getChildren().addAll(bubblesorRadio,insertionRadio,quickRadio);
         ToggleGroup group = new ToggleGroup();
         bubblesorRadio.setToggleGroup(group);
         insertionRadio.setToggleGroup(group);
+        quickRadio.setToggleGroup(group);
 
 
         addRectangle(rectanglePane);
@@ -128,6 +145,9 @@ public class SortApp extends Application {
                         }
                         if(insertionRadio.isSelected()){
                             sortButton.setOnAction(event -> insertionSortStep());
+                        }
+                        if(quickRadio.isSelected()){
+                            sortButton.setOnAction(event -> QuickSortStep());
                         }
 
                     }
