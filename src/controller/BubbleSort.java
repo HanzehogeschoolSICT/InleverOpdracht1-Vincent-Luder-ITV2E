@@ -1,6 +1,8 @@
 package controller;
 
 
+import model.ArrayFiller;
+
 import java.util.Arrays;
 
 /**
@@ -12,6 +14,19 @@ public class BubbleSort{
 
     public void resetCount(boolean reset){
         isSorted = reset;
+    }
+
+    public void autoSort(int[] compareArray){
+
+        while(!isSorted){
+            try {
+                sortArray(compareArray);
+
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void sortArray(int [] compareArray){
@@ -28,14 +43,23 @@ public class BubbleSort{
                     compareArray[j] = compareArray[j + 1];
                     compareArray[j + 1] = temp;
 
-                    for (int compare : compareArray) {
-                        System.out.println(compare);
-                    }
                 }
             }
             if(Arrays.equals(check, compareArray)){
                 isSorted=true;
             }
+        }
+    }
+
+    public static void main(String[] args) {
+        BubbleSort sorter = new BubbleSort();
+        ArrayFiller filler = new ArrayFiller();
+        int[] array = new int[]{5,2,6,1,3};
+
+
+        sorter.sortArray(array);
+        for(int i =0; i < array.length;i++){
+            System.out.println(array[i]);
         }
     }
 }

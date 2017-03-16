@@ -62,9 +62,15 @@ public class SortApp extends Application {
         }
     }
 
-    private void bubbleSortStep(){
+    private void bubbleSortStep(boolean isAuto){
         //pane.requestLayout();
-        sorter.sortArray(array);
+        if(isAuto){
+            sorter.autoSort(array);
+        }
+        else{
+            sorter.sortArray(array);
+        }
+
         rectanglePane.getChildren().clear();
         addRectangle(rectanglePane);
     }
@@ -161,7 +167,8 @@ public class SortApp extends Application {
                     public void changed(ObservableValue<? extends Toggle> ov,
                                         Toggle old_toggle, Toggle new_toggle) {
                         if(bubblesorRadio.isSelected()){
-                            sortButton.setOnAction(event -> bubbleSortStep());
+                            sortButton.setOnAction(event -> bubbleSortStep(false));
+                            autoButton.setOnAction(event -> bubbleSortStep(true));
                         }
                         if(insertionRadio.isSelected()){
                             sortButton.setOnAction(event -> insertionSortStep());
