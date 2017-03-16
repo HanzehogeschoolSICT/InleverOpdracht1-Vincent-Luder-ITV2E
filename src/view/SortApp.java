@@ -12,6 +12,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Toggle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -27,26 +28,26 @@ import java.util.ArrayList;
  */
 public class SortApp extends Application {
 
-    int arrayLimit = 50;
+    private int arrayLimit = 10;
 
-    int[] array = new int[arrayLimit];
-    ArrayFiller filler = new ArrayFiller();
-    Button sortButton = new Button();
-    Button autoButton = new Button();
-    Button resetButton = new Button();
-    HBox pane = new HBox();
-    HBox rectanglePane = new HBox();
+    private int[] array = new int[arrayLimit];
+    private ArrayFiller filler = new ArrayFiller();
+    private Button sortButton = new Button();
+    private Button autoButton = new Button();
+    private Button resetButton = new Button();
+    private Pane pane = new Pane();
+    private HBox rectanglePane = new HBox();
 
-    RadioButton bubblesorRadio = new RadioButton("BubbleSort");
-    RadioButton insertionRadio = new RadioButton("InsertionSort");
-    RadioButton quickRadio = new RadioButton("Quicksort");
+    private RadioButton bubblesorRadio = new RadioButton("BubbleSort");
+    private RadioButton insertionRadio = new RadioButton("InsertionSort");
+    private RadioButton quickRadio = new RadioButton("Quicksort");
     //HBox knopjes = new HBox();
 
-    BubbleSort sorter = new BubbleSort();
-    InsertionSort insertionSorter = new InsertionSort();
-    QuickSort quicksorter = new QuickSort();
+    private BubbleSort sorter = new BubbleSort();
+    private InsertionSort insertionSorter = new InsertionSort();
+    private QuickSort quicksorter = new QuickSort();
 
-    public Rectangle createRectangle(int lengte){
+    private Rectangle createRectangle(int lengte){
 
         Rectangle rectangle = new Rectangle(100,10,10,lengte*15);
         rectangle.setStroke(Color.BLACK);
@@ -54,35 +55,36 @@ public class SortApp extends Application {
         return rectangle;
     }
 
-    public void addRectangle(HBox pane){
+    private void addRectangle(HBox pane){
         this.rectanglePane = pane;
         for(int rectangle: array){
             pane.getChildren().add(createRectangle(rectangle));
         }
     }
 
-    public void bubbleSortStep(){
+    private void bubbleSortStep(){
         //pane.requestLayout();
         sorter.sortArray(array);
         rectanglePane.getChildren().clear();
         addRectangle(rectanglePane);
     }
 
-    public void insertionSortStep(){
+    private void insertionSortStep(){
         //pane.requestLayout();
         insertionSorter.insertionSort(array);
         rectanglePane.getChildren().clear();
         addRectangle(rectanglePane);
     }
 
-    public void QuickSortStep(){
+    private void QuickSortStep(){
         //pane.requestLayout();
         quicksorter.quickSort(array);
         rectanglePane.getChildren().clear();
         addRectangle(rectanglePane);
     }
 
-    public void reset(HBox pane){
+    private void reset(HBox pane){
+        sorter.resetCount(false);
         this.rectanglePane =pane;
         pane.getChildren().clear();
         filler.fillArray(arrayLimit,array);
@@ -98,9 +100,27 @@ public class SortApp extends Application {
         //fill the array with ten Compare objects
         filler.fillArray(arrayLimit,array);
 
+        pane.setPrefHeight(500);
+        pane.setPrefWidth(1000);
+        rectanglePane.setPrefWidth(650);
+        rectanglePane.setPrefHeight(500);
+        rectanglePane.setLayoutX(12);
+        rectanglePane.setLayoutY(6);
+        autoButton.setLayoutX(713);
+        autoButton.setLayoutY(24);
+        sortButton.setLayoutX(713);
+        sortButton.setLayoutY(53);
+        resetButton.setLayoutY(81);
+        resetButton.setLayoutX(713);
 
+        quickRadio.setLayoutX(816);
+        quickRadio.setLayoutY(16);
+        bubblesorRadio.setLayoutX(816);
+        bubblesorRadio.setLayoutY(41);
+        insertionRadio.setLayoutX(816);
+        insertionRadio.setLayoutY(70);
 
-        pane.setAlignment(Pos.TOP_CENTER);
+        //pane.setAlignment(Pos.TOP_CENTER);
         rectanglePane.setAlignment(Pos.BOTTOM_CENTER);
 
         sortButton.setText("Sorteer");
@@ -125,8 +145,8 @@ public class SortApp extends Application {
         Scene scene = new Scene(pane);
 
         primaryStage.setScene(scene);
-        primaryStage.setWidth(800);
-        primaryStage.setHeight(300);
+        //primaryStage.setWidth(800);
+        //primaryStage.setHeight(300);
         primaryStage.show();
 
 
