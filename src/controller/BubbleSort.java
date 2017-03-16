@@ -32,7 +32,7 @@ public class BubbleSort{
     public void sortArray(int [] compareArray){
         int[] check = new int[compareArray.length];
         if(isSorted) {
-            System.out.println("kut");
+            System.out.println("array is sorted");
         } else {
             for(int x=0; x<=compareArray.length-1; x++ ){
                 check[x] = compareArray[x];
