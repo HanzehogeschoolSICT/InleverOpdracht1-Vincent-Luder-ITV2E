@@ -36,9 +36,6 @@ public class InsertionSort {
                 if (j > 0 && array[j - 1] > sortValue) {
                     array[j] = array[j - 1];
                     j--;
-                    for (int compare : array) {
-                        System.out.println(compare);
-                    }
                 }
                 array[j] = sortValue;
             }

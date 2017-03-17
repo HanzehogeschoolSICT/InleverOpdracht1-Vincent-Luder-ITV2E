@@ -1,13 +1,12 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import model.BubbleSort;
 import model.Model;
 
 /**
@@ -24,6 +23,7 @@ public class Controller {
     @FXML private RadioButton quickRadio;
     @FXML private RadioButton mergeRadio;
     @FXML private ToggleGroup group;
+    @FXML private Label statusLabel;
 
     private Model model = new Model();
 
@@ -41,12 +41,15 @@ public class Controller {
         if(bubbleRadio.isSelected()){
             model.bubbleSortStep(false);
             regenerate();
+
         }
         if(insertRadio.isSelected()){
             model.insertionSortStep(false);
             regenerate();
         }
-        System.out.println("poep");
+        System.out.println("step");
+
+
     }
 
     @FXML
@@ -83,8 +86,15 @@ public class Controller {
     }
 
     private void regenerate(){
+        if(model.getStatus()){
+            statusLabel.setText("The array is sorted");
+        }
+        else{
+            statusLabel.setText("The array is not sorted");
+        }
         rectanglePane.getChildren().clear();
         addRectangle(rectanglePane);
+
     }
 
 }

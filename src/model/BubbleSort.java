@@ -1,10 +1,14 @@
 package model;
+import controller.Controller;
+import javafx.scene.control.TextArea;
+
 import java.util.Arrays;
 /**
  * Created by Gebruiker on 8-3-2017.
  * Bron gebruikt voor verggelijking: https://www.tutorialspoint.com/javaexamples/arrays_equal.htm
  */
 public class BubbleSort{
+
 
     public boolean autoSort(int[] compareArray, boolean status){
         boolean isSorted = status;
@@ -24,6 +28,7 @@ public class BubbleSort{
         int[] check = new int[compareArray.length];
         if(isSorted) {
             System.out.println("array is sorted");
+
         } else {
             for(int x=0; x<=compareArray.length-1; x++ ){
                 check[x] = compareArray[x];
@@ -41,4 +46,5 @@ public class BubbleSort{
         }
         return isSorted;
     }
+
 }
