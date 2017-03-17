@@ -21,6 +21,6 @@
       <RadioButton fx:id="insertRadio" layoutX="699.0" layoutY="40.0" mnemonicParsing="false" text="InsertionSort" toggleGroup="$group" />
       <RadioButton fx:id="quickRadio" layoutX="699.0" layoutY="65.0" mnemonicParsing="false" text="QuickSort" toggleGroup="$group" />
       <RadioButton fx:id="mergeRadio" layoutX="699.0" layoutY="86.0" mnemonicParsing="false" text="MergeSort!" toggleGroup="$group" />
-      <Label fx:id="statusLabel" layoutX="644.0" layoutY="126.0" prefHeight="17.0" prefWidth="130.0" text="The array is not sorted" />
+      <Label fx:id="statusLabel" layoutX="644.0" layoutY="126.0" prefHeight="17.0" prefWidth="130.0" text="The array is not sorted!" />
    </children>
 </Pane>

@@ -1,12 +1,14 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import model.BubbleSort;
 import model.Model;
 
 /**
@@ -33,7 +35,6 @@ public class Controller {
     private void initialize(){
         model.generate();
         addRectangle(rectanglePane);
-
     }
 
     @FXML
@@ -41,15 +42,20 @@ public class Controller {
         if(bubbleRadio.isSelected()){
             model.bubbleSortStep(false);
             regenerate();
-
         }
         if(insertRadio.isSelected()){
             model.insertionSortStep(false);
             regenerate();
         }
+        if(quickRadio.isSelected()){
+            model.quickSortStep(false);
+            regenerate();
+        }
+        if(mergeRadio.isSelected()){
+            model.mergeSortStep(false);
+            regenerate();
+        }
         System.out.println("step");
-
-
     }
 
     @FXML
@@ -60,6 +66,14 @@ public class Controller {
         }
         if(insertRadio.isSelected()){
             model.insertionSortStep(true);
+            regenerate();
+        }
+        if(quickRadio.isSelected()){
+            model.quickSortStep(true);
+            regenerate();
+        }
+        if(mergeRadio.isSelected()){
+            model.mergeSortStep(true);
             regenerate();
         }
     }
@@ -85,10 +99,6 @@ public class Controller {
         }
     }
 
-    public void test(){
-
-    }
-
     private void regenerate(){
         if(model.getStatus()){
             statusLabel.setText("The array is sorted");
@@ -98,7 +108,6 @@ public class Controller {
         }
         rectanglePane.getChildren().clear();
         addRectangle(rectanglePane);
-
     }
 
 }

@@ -1,27 +1,53 @@
 package model;
 
+import java.util.Arrays;
+
 /**
  * Bron: Introduction to Java Programming, Hoofdstuk 23, blz 872
  */
 public class QuickSort {
-    public static void quickSort(int[] list) {
-        quickSort(list, 0, list.length - 1);
 
+    public boolean autoSort(int[] list, boolean status){
+        boolean isSorted = status;
+        while(!isSorted){
+            try {
+                isSorted = sortArray(list, isSorted);
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return isSorted;
     }
 
-    public static void quickSort(int[] list, int first, int last) {
-        if (last > first) {
-            int pivotIndex = partition(list, first, last);
-            quickSort(list, first, pivotIndex - 1);
-            quickSort(list, pivotIndex + 1, last);
-        }
+    public static boolean sortArray(int[] list, boolean status) {
+        return quickSort(list, 0, list.length - 1, status);
+    }
+
+    public static boolean quickSort(int[] list, int first, int last, boolean status) {
+        boolean isSorted = status;
+        int[] check = new int[list.length];
+        if(isSorted) {
+            System.out.println("array is sorted");
+        } else {
+            for(int x=0; x<=list.length-1; x++ ){
+                check[x] = list[x];
+            }
+            if (last > first) {
+                int pivotIndex = partition(list, first, last);
+                quickSort(list, first, pivotIndex - 1,isSorted);
+                quickSort(list, pivotIndex + 1, last, isSorted);
+            }
+            if(Arrays.equals(check, list)){
+                isSorted = true;
+            }
+        } return isSorted;
     }
     public static int partition(int[] list, int first, int last) {
         int pivot = list[first]; // Choose the first element as the pivot
         int low = first + 1; // Index for forward search
         int high = last; // Index for backward search
-        while (high > low) {
-            System.out.println("Snel gesorteerd!");
+        if (high > low) {
         // Search forward from left
             while (low <= high && list[low] <= pivot)
                 low++;

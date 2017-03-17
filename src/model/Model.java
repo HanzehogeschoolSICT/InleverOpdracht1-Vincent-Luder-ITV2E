@@ -12,6 +12,8 @@ public class Model {
 
     private BubbleSort bubbleSorter = new BubbleSort();
     private InsertionSort insertionSorter = new InsertionSort();
+    private QuickSort quickSorter = new QuickSort();
+    private MergeSort mergeSorter = new MergeSort();
 
 
     public int[] getArray(){
@@ -40,6 +42,24 @@ public class Model {
         }
         else{
             setSorted(bubbleSorter.sortArray(array, isSorted));
+        }
+    }
+
+    public void quickSortStep(boolean isAuto){
+        if(isAuto){
+            setSorted(quickSorter.autoSort(array, isSorted));
+        }
+        else{
+            setSorted(quickSorter.sortArray(array, isSorted));
+        }
+    }
+
+    public void mergeSortStep(boolean isAuto){
+        if(isAuto){
+            //setSorted(mergeSorter.autoSort(array, isSorted));
+        }
+        else{
+            setSorted(mergeSorter.sortArray(array, isSorted));
         }
     }
 
