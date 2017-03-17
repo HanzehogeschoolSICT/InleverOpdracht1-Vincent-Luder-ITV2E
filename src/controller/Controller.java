@@ -85,6 +85,10 @@ public class Controller {
         }
     }
 
+    public void test(){
+
+    }
+
     private void regenerate(){
         if(model.getStatus()){
             statusLabel.setText("The array is sorted");

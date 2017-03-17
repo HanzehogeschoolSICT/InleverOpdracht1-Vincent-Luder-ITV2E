@@ -21,12 +21,12 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        String fxmlDocPath = "/home/niek/Bureaublad/Nieksort/src/layout.fxml";
+        String fxmlDocPath = "C:\\Users\\vincent\\Documents\\InleverOpdracht1-Vincent-Luder-Niek-Beukema-ITV2E\\src\\layout.fxml";
         FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
         Pane rootPane = loader.load(fxmlStream);
         Scene scene = new Scene(rootPane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Sorteren van Niek");
+
         primaryStage.show();
     }
 }
