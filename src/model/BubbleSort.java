@@ -1,35 +1,26 @@
-package controller;
-
-
-import model.ArrayFiller;
-
+package model;
 import java.util.Arrays;
-
 /**
  * Created by Gebruiker on 8-3-2017.
  * Bron gebruikt voor verggelijking: https://www.tutorialspoint.com/javaexamples/arrays_equal.htm
  */
 public class BubbleSort{
-    boolean isSorted = false;
 
-    public void resetCount(boolean reset){
-        isSorted = reset;
-    }
-
-    public void autoSort(int[] compareArray){
-
+    public boolean autoSort(int[] compareArray, boolean status){
+        boolean isSorted = status;
         while(!isSorted){
             try {
-                sortArray(compareArray);
-
+                isSorted = sortArray(compareArray, isSorted);
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        return isSorted;
     }
 
-    public void sortArray(int [] compareArray){
+    public boolean sortArray(int [] compareArray, boolean status){
+        boolean isSorted = status;
         int[] check = new int[compareArray.length];
         if(isSorted) {
             System.out.println("array is sorted");
@@ -42,24 +33,12 @@ public class BubbleSort{
                     int temp = compareArray[j];
                     compareArray[j] = compareArray[j + 1];
                     compareArray[j + 1] = temp;
-
                 }
             }
             if(Arrays.equals(check, compareArray)){
-                isSorted=true;
+                isSorted = true;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        BubbleSort sorter = new BubbleSort();
-        ArrayFiller filler = new ArrayFiller();
-        int[] array = new int[]{5,2,6,1,3};
-
-
-        sorter.sortArray(array);
-        for(int i =0; i < array.length;i++){
-            System.out.println(array[i]);
-        }
+        return isSorted;
     }
 }

@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 /**
  * Bron: Introduction to Java Programming, Hoofdstuk 23, blz 872
