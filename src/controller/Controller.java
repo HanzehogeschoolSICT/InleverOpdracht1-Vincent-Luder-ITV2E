@@ -79,7 +79,6 @@ public class Controller {
     private void doReset(){
         model.resetCount(false);
         model.generate();
-        assert(model.getArray()!=null);
         regenerate();
     }
 
