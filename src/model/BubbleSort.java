@@ -1,8 +1,8 @@
 package model;
 import java.util.Arrays;
 /**
- * Created by Gebruiker on 8-3-2017.
  * Bron gebruikt voor verggelijking: https://www.tutorialspoint.com/javaexamples/arrays_equal.htm
+ * Bron: Introduction to Java Programming, Comprehensive version
  */
 public class BubbleSort{
 

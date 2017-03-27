@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Bron: Introduction to Java Programming, Comprehensive version
+ */
 public class MergeSort {
     /** The method for sorting the numbers */
     public static boolean sortArray(int[] list, boolean status) {

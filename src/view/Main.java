@@ -10,10 +10,10 @@ import model.ArrayFiller;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * View gemaakt met Gluon Scenebuilder
+ */
 public class Main extends Application{
-
-
-
     public static void main(String[] args) {
         Application.launch(args);
     }
@@ -21,7 +21,7 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        String fxmlDocPath = "C:\\Users\\vincent\\Documents\\InleverOpdracht1-Vincent-Luder-Niek-Beukema-ITV2E\\src\\layout.fxml";
+        String fxmlDocPath = "C:\\Users\\Niek\\IdeaProjects\\InleverOpdracht1-Vincent-Luder-Niek-Beukema-ITV2E\\src\\layout.fxml";
         FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
         Pane rootPane = loader.load(fxmlStream);
         Scene scene = new Scene(rootPane);

@@ -1,9 +1,6 @@
 package model;
 
 
-/**
- * Created by Niek on 17-3-2017.
- */
 public class Model {
     private int arrayLimit = 50;
     private int[] array = new int[arrayLimit];

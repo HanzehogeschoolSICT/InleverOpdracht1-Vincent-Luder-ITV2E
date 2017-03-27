@@ -11,9 +11,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.Model;
 
-/**
- * Created by Niek on 17-3-2017.
- */
 public class Controller {
     @FXML private Button sortButton;
     @FXML private Button autoButton;
@@ -93,7 +90,6 @@ public class Controller {
     }
 
     private void addRectangle(HBox pane){
-        //this.rectanglePane = pane;
         for(int rectangle: model.getArray()){
             pane.getChildren().add(createRectangle(rectangle));
         }
