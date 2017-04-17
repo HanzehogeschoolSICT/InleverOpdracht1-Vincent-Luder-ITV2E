@@ -1,11 +1,15 @@
-package view;
+package controller;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.ArrayFiller;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,13 +24,15 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        String fxmlDocPath = "C:\\Users\\Niek\\IdeaProjects\\InleverOpdracht1-Vincent-Luder-Niek-Beukema-ITV2E\\src\\layout.fxml";
-        FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
-        Pane rootPane = loader.load(fxmlStream);
-        Scene scene = new Scene(rootPane);
-        primaryStage.setScene(scene);
-
+        Parent root = FXMLLoader.load(getClass().getResource("/view/layout.fxml"));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent e) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
     }
 }
