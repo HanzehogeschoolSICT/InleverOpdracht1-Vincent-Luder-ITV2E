@@ -3,27 +3,30 @@ package model;
 /**
  * Bron: Introduction to Java Programming, Comprehensive version
  */
-public class MergeSort {
+public class MergeSort implements Sorter{
     /** The method for sorting the numbers */
-    public static boolean sortArray(int[] list, boolean status) {
+
+    @Override
+
+    public  boolean sortArray(int[] array, boolean status) {
         boolean isSorted = status;
-        if (list.length > 1) {// Merge sort the first half
-            int[] firstHalf = new int[list.length / 2];
-            System.arraycopy(list, 0, firstHalf, 0, list.length / 2);
+        if (array.length > 1) {// Merge sort the first half
+            int[] firstHalf = new int[array.length / 2];
+            System.arraycopy(array, 0, firstHalf, 0, array.length / 2);
             sortArray(firstHalf, isSorted);
             // Merge sort the second half
-            int secondHalfLength = list.length - list.length / 2;
+            int secondHalfLength = array.length - array.length / 2;
             int[] secondHalf = new int[secondHalfLength];
-            System.arraycopy(list, list.length / 2,
+            System.arraycopy(array, array.length / 2,
                     secondHalf, 0, secondHalfLength);
             sortArray(secondHalf, isSorted);
             // Merge firstHalf with secondHalf into list
-            merge(firstHalf, secondHalf, list);
+            merge(firstHalf, secondHalf, array);
         }
         return false;
     }
     /** Merge two sorted lists */
-    public static void merge(int[] list1, int[] list2, int[] temp){
+    public  void merge(int[] list1, int[] list2, int[] temp){
         int current1 = 0; // Current
         int current2 = 0; // Current
         int current3 = 0; // Current
@@ -40,4 +43,5 @@ public class MergeSort {
             temp[current3++] = list2[current2++];
 
     }
+
 }

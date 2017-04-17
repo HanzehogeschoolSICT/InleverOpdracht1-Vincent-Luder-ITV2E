@@ -4,41 +4,29 @@ import java.util.Arrays;
  * Bron gebruikt voor verggelijking: https://www.tutorialspoint.com/javaexamples/arrays_equal.htm
  * Bron: Introduction to Java Programming, Comprehensive version
  */
-public class BubbleSort{
+public class BubbleSort implements Sorter{
 
-    public boolean autoSort(int[] compareArray, boolean status){
+    @Override
+    public boolean sortArray(int [] array, boolean status){
         boolean isSorted = status;
-        while(!isSorted){
-            try {
-                isSorted = sortArray(compareArray, isSorted);
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        int[] check = new int[array.length];
+        if(!isSorted) {
+            for(int x=0; x<=array.length-1; x++ ){
+                check[x] = array[x];
             }
-        }
-        return isSorted;
-    }
-
-    public boolean sortArray(int [] compareArray, boolean status){
-        boolean isSorted = status;
-        int[] check = new int[compareArray.length];
-        if(isSorted) {
-            System.out.println("array is sorted");
-        } else {
-            for(int x=0; x<=compareArray.length-1; x++ ){
-                check[x] = compareArray[x];
-            }
-            for (int j = 0; j < compareArray.length - 1; j++) {
-                if (compareArray[j] > compareArray[j + 1]) {
-                    int temp = compareArray[j];
-                    compareArray[j] = compareArray[j + 1];
-                    compareArray[j + 1] = temp;
+            for (int j = 0; j < array.length - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
             }
-            if(Arrays.equals(check, compareArray)){
+            if(Arrays.equals(check, array)){
                 isSorted = true;
             }
         }
         return isSorted;
     }
+
+
 }

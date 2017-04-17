@@ -5,21 +5,9 @@ import java.util.Arrays;
 /**
  * Bron: Introduction to Java Programming, Comprehensive version
  */
-public class InsertionSort {
+public class InsertionSort implements Sorter{
 
-    public boolean autoSort(int[] compareArray, boolean status){
-        boolean isSorted = status;
-        while(!isSorted){
-            try {
-                isSorted = sortArray(compareArray, isSorted);
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return isSorted;
-    }
-
+    @Override
 
     public boolean sortArray(int[] array, boolean status){
         boolean isSorted = status;
@@ -44,4 +32,6 @@ public class InsertionSort {
             }
         } return isSorted;
     }
+
+
 }

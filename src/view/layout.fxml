@@ -3,14 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+<Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
-      <HBox fx:id="rectanglePane" alignment="BOTTOM_CENTER" layoutX="-9.0" prefHeight="500.0" prefWidth="634.0" />
-      <Button fx:id="sortButton" layoutX="644.0" layoutY="14.0" mnemonicParsing="false" onAction="#startSort" text="Sort" />
+      <HBox fx:id="rectanglePane" alignment="BOTTOM_CENTER" layoutX="14.0" prefHeight="500.0" prefWidth="634.0" />
+      <Button fx:id="sortButton" layoutX="644.0" layoutY="14.0" mnemonicParsing="false" onAction="#startSort" text="Step" />
       <Button fx:id="autoButton" layoutX="644.0" layoutY="48.0" mnemonicParsing="false" onAction="#startAutoSort" text="Auto" />
       <Button fx:id="resetButton" layoutX="644.0" layoutY="82.0" mnemonicParsing="false" onAction="#doReset" text="Reset" />
       <RadioButton fx:id="bubbleRadio" layoutX="699.0" layoutY="18.0" mnemonicParsing="false" text="BubbleSort">
@@ -21,6 +22,8 @@
       <RadioButton fx:id="insertRadio" layoutX="699.0" layoutY="40.0" mnemonicParsing="false" text="InsertionSort" toggleGroup="$group" />
       <RadioButton fx:id="quickRadio" layoutX="699.0" layoutY="65.0" mnemonicParsing="false" text="QuickSort" toggleGroup="$group" />
       <RadioButton fx:id="mergeRadio" layoutX="699.0" layoutY="86.0" mnemonicParsing="false" text="MergeSort!" toggleGroup="$group" />
-      <Label fx:id="statusLabel" layoutX="644.0" layoutY="126.0" prefHeight="17.0" prefWidth="130.0" text="The array is not sorted!" />
+      <Label fx:id="statusLabel" layoutX="644.0" layoutY="120.0" prefHeight="17.0" prefWidth="130.0" text="Niet gesorteerd!" />
+      <Label layoutX="811.0" layoutY="99.0" text="Interval:" />
+      <Slider fx:id="slider" layoutX="825.0" layoutY="120.0" max="1000.0" orientation="VERTICAL" prefHeight="371.0" prefWidth="0.0" showTickLabels="true" showTickMarks="true" value="100.0" />
    </children>
 </Pane>
