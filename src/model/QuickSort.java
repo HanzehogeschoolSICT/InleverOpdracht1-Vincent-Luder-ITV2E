@@ -7,24 +7,11 @@ import java.util.Arrays;
  */
 public class QuickSort {
 
-    public boolean autoSort(int[] list, boolean status){
-        boolean isSorted = status;
-        while(!isSorted){
-            try {
-                isSorted = sortArray(list, isSorted);
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return isSorted;
-    }
-
-    public static boolean sortArray(int[] list, boolean status) {
+    public  boolean sortArray(int[] list, boolean status) {
         return quickSort(list, 0, list.length - 1, status);
     }
 
-    public static boolean quickSort(int[] list, int first, int last, boolean status) {
+    public  boolean quickSort(int[] list, int first, int last, boolean status) {
         boolean isSorted = status;
         int[] check = new int[list.length];
         if(isSorted) {
@@ -43,7 +30,7 @@ public class QuickSort {
             }
         } return isSorted;
     }
-    public static int partition(int[] list, int first, int last) {
+    public  int partition(int[] list, int first, int last) {
         int pivot = list[first]; // Choose the first element as the pivot
         int low = first + 1; // Index for forward search
         int high = last; // Index for backward search
